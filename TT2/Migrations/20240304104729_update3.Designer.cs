@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TT2.Migrations
 {
     [DbContext(typeof(App_DBcontext))]
-    [Migration("20240304095718_update")]
-    partial class update
+    [Migration("20240304104729_update3")]
+    partial class update3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

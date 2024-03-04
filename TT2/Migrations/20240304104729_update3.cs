@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TT2.Migrations
 {
     /// <inheritdoc />
-    public partial class update : Migration
+    public partial class update3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -563,16 +563,6 @@ namespace TT2.Migrations
                 column: "FoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BillTickets_BillId",
-                table: "BillTickets",
-                column: "BillId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BillTickets_TicketId",
-                table: "BillTickets",
-                column: "TicketId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Bills_BillStatusId",
                 table: "Bills",
                 column: "BillStatusId");
@@ -586,6 +576,16 @@ namespace TT2.Migrations
                 name: "IX_Bills_PromotionId",
                 table: "Bills",
                 column: "PromotionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BillTickets_BillId",
+                table: "BillTickets",
+                column: "BillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BillTickets_TicketId",
+                table: "BillTickets",
+                column: "TicketId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ConfirmEmails_UserId",
