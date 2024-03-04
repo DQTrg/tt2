@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace TT2.Migrations
 {
-    [DbContext(typeof(Dbcontext))]
+    [DbContext(typeof(App_DBcontext))]
     [Migration("20240304095718_update")]
     partial class update
     {

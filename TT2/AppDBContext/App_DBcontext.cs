@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using TT2.Entity;
 
-public class Dbcontext : DbContext
+public class App_DBcontext : DbContext
 {
 
     public DbSet<Banner> Banners { get; set; }
@@ -31,6 +32,6 @@ public class Dbcontext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server = ADMIN-PC; database = CINIMA; Trusted_Connection = true; TrustServerCertificate = true");
+        optionsBuilder.UseSqlServer("Server = ADMIN-PC; database = CINIMAR; Trusted_Connection = true; TrustServerCertificate = true");
     }
 }
