@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using System.Text.Json.Serialization;
+using TT2.Service.Interface;
+using TT2.Service.Implement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IUser_Service, User_Service>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
