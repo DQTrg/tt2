@@ -51,10 +51,10 @@ namespace TT2.Service.Implement
             user.Password = request.Password;
             user.Name = request.Name;
             user.PhoneNumber = request.PhoneNumber;
-            user.RankCustomerId = 1;
-            user.IsActive = true;
-            user.RoleId = 1;
-            user.UserStatusId = 1;
+            user.RankCustomerId = 2;
+            user.IsActive = false;
+            user.RoleId = 2;
+            user.UserStatusId = 2;
             dbcontext.Users.Add(user);
             dbcontext.SaveChanges();
             sendmail(user.Email, "Chúc mừng bạn đã tạo tài khoản thành công");
@@ -83,13 +83,13 @@ namespace TT2.Service.Implement
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("vuquang01dl@gmail.com", "kvyz gumz rimx kcdn"),
+                Credentials = new NetworkCredential("dtruong64051@gmail.com", "kvyz gumz rimx kcdn"),
                 EnableSsl = true
             };
             try
             {
                 var message = new MailMessage();
-                message.From = new MailAddress("vuquang01dl@gmail.com");
+                message.From = new MailAddress("dtruong64051@gmail.com");
                 message.To.Add(emailTo.Mail);
                 message.Subject = emailTo.Subject;
                 message.Body = emailTo.Content;
@@ -102,6 +102,22 @@ namespace TT2.Service.Implement
             {
                 return "Lỗi khi gửi email: " + ex.Message;
             }
+        }
+
+        public IQueryable<DataResponse_User> GetAllUser()
+        {
+            var users = dbcontext.Users.Select(u => converter.EntityToDTO(u));
+            return users;
+        }
+
+        public DataResponse_User GetUserById(int id)
+        {
+            var user = dbcontext.Users.SingleOrDefault(x => x.Id == id);
+            if(user == null)
+            {
+                return null;
+            }
+            return converter.EntityToDTO(user);
         }
 
         // Sử dụng Mật khẩu Ứng dụng của bạn để xác thực Gmail

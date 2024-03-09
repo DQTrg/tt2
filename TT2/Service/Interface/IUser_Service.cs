@@ -7,5 +7,7 @@ namespace TT2.Service.Interface
     public interface IUser_Service
     {
         ResponseObject<DataResponse_User> Register(Request_register request);
+        IQueryable<DataResponse_User> GetAllUser();
+        DataResponse_User GetUserById(int id);
     }
 }

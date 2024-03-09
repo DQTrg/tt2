@@ -17,6 +17,6 @@ public class App_DBcontext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server = ADMIN-PC; database = CINIMAR; Trusted_Connection = true; TrustServerCertificate = true");
+        optionsBuilder.UseSqlServer("data source=Admin;initial catalog=dbCinema;trusted_connection=true;TrustServerCertificate = true");
     }
 }
