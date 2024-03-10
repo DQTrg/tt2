@@ -69,5 +69,11 @@ namespace TT2.Controllers
             return Ok(_user_service.ResetPassword(request));
         }
 
+        [HttpPost("active")]
+        public IActionResult xacthuc(string email, string token)
+        {
+            return Ok(_user_service.xacthuc(email, token));
+        }
+
     }
 }

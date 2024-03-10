@@ -65,14 +65,54 @@ namespace TT2.Service.Implement
             user.Name = request.Name;
             user.PhoneNumber = request.PhoneNumber;
             user.RankCustomerId = 1;
-            user.IsActive = false;
+            user.IsActive = false;// chua duoc active tai khoan
             user.RoleId = 1;
-            user.UserStatusId = 1;
+            user.UserStatusId = 2; // nonactive
             dbcontext.Users.Add(user);
             dbcontext.SaveChanges();
-            sendmail(user.Email, "Chúc mừng bạn đã tạo tài khoản thành công");
+
+            var resetToken = GenerateResetToken();
+
+
+            var refreshToken = new RefreshToken
+            {
+                Token = resetToken,
+                ExpiredTime = DateTime.Now.AddHours(1),
+                UserId = user.Id
+            };
+
+            dbcontext.RefreshTokens.Add(refreshToken);
+            dbcontext.SaveChanges();
+
+
+            SendPasswordResetEmail(user.Email, resetToken);
             return response.ResponseSucess("Bạn đã tạo tài khoản thành công", converter.EntityToDTO(user));
 
+        }
+
+        public ResponseObject<DataResponse_User> xacthuc(string email, string token)
+        {
+            var taikhoan = dbcontext.RefreshTokens.FirstOrDefault(x => x.Token == token);
+            if(taikhoan == null)
+            {
+                return response.ResponeError(StatusCodes.Status404NotFound, "Không tìm thấy mã xác thực tài khoản", null);
+            }
+            else
+            {
+                var user = dbcontext.Users.FirstOrDefault(x => x.Email == email);
+                if(user == null)
+                {
+                    return response.ResponeError(StatusCodes.Status404NotFound, " Không tìm thấy email", null);
+                }
+                else
+                {
+                    user.IsActive = true;
+                    user.UserStatusId = 1;
+                    dbcontext.Update(user);
+                    dbcontext.SaveChanges();
+                    return response.ResponseSucess("xac thuc tai khoan thanh cong", converter.EntityToDTO(user));
+                }
+            }
         }
 
         // gửi email
@@ -287,6 +327,8 @@ namespace TT2.Service.Implement
 
             SendEmail(emailTo);
         }
+
+
 
 
         // Sử dụng Mật khẩu Ứng dụng của bạn để xác thực Gmail

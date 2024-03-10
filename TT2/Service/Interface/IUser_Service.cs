@@ -15,5 +15,7 @@ namespace TT2.Service.Interface
         ResponseObject<DataResponseToken> Login(Request_Login request);
         ResponseObject<DataResponse_User> ForgotPassword(string email);
         ResponseObject<DataResponse_User> ResetPassword(Request_ResetPassword request);
+        ResponseObject<DataResponse_User> xacthuc(string email, string token);
+
     }
 }
