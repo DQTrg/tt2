@@ -8,7 +8,6 @@ public class App_DBcontext : DbContext
 
 
     public DbSet<ConfirmEmail> ConfirmEmails { get; set; }
-
     public DbSet<RankCustomer> RankCustomers { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<Role> Roles { get; set; }
@@ -17,6 +16,6 @@ public class App_DBcontext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("data source=Admin;initial catalog=dbCinema;trusted_connection=true;TrustServerCertificate = true");
+        optionsBuilder.UseSqlServer("Server = ADMIN-PC; database = cinemar; Trusted_Connection = true; TrustServerCertificate = true");
     }
 }
