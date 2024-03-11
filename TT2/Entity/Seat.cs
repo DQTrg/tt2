@@ -9,9 +9,9 @@ namespace TT2.Entity
         public int SeatStatusId { get; set; }
         public string Line {  get; set; }
         public int RoomId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public int SeatTypeId { get; set; }
+        public int TicketId { get; set; }
 
-        public List<Ticket> Tickets { get; set; }
     }
 }
