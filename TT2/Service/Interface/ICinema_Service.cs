@@ -6,7 +6,7 @@ namespace TT2.Service.Interface
 {
     public interface ICinema_Service
     {
-        ResponseObject<DataResponse_Cinema> AddCinema(Request_UpdateCinema request);
+        ResponseObject<DataResponse_Cinema> AddCinema(Request_AddCinema request);
         ResponseObject<DataResponse_Cinema> UpdateCinema (int cinemaId, Request_UpdateCinema request);
         ResponseObject<DataResponse_Cinema> DeleteCinema (int cinemaId);
     }

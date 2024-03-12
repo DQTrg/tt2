@@ -17,8 +17,9 @@ namespace TT2.Service.Implement
         {
             _dbcontext = new App_DBcontext();
             _response = new ResponseObject<DataResponse_Cinema>();
+            _converter = new CinemaConverter();
         }
-        public ResponseObject<DataResponse_Cinema> AddCinema(Request_UpdateCinema request)
+        public ResponseObject<DataResponse_Cinema> AddCinema(Request_AddCinema request)
         {
             if (string.IsNullOrWhiteSpace(request.Address) || string.IsNullOrWhiteSpace(request.NameOfCinema) || string.IsNullOrWhiteSpace(request.Code))
             {
