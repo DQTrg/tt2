@@ -14,6 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUser_Service, User_Service>();
 builder.Services.AddScoped<ICinema_Service, Cinema_Service>();
 builder.Services.AddScoped<IRoom_Service, Room_Service>();
+builder.Services.AddScoped<IFood_Service, Food_Service>();
+builder.Services.AddScoped<ISeat_Service, Seat_Service>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
