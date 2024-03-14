@@ -21,13 +21,13 @@ namespace TT2.Controllers
         {
             return Ok(_service.AddCinema(request_Add));
         }
-        [HttpPut("update")]
+        [HttpPut("update_cinema")]
         //[Authorize(Roles = "admin")]
         public IActionResult UpdateCinema(int cinemaId, [FromForm] Request_UpdateCinema request_Update)
         {
             return Ok(_service.UpdateCinema(cinemaId, request_Update));
         }
-        [HttpPut("delete")]
+        [HttpPut("delete_cinema")]
         //[Authorize(Roles = "admin")]
         public IActionResult DeleteCinema(int cinemaId)
         {
