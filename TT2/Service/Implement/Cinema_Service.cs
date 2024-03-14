@@ -44,12 +44,29 @@ namespace TT2.Service.Implement
 
         public ResponseObject<DataResponse_Cinema> DeleteCinema(int cinemaId)
         {
-            throw new NotImplementedException();
+            var cinema = _dbcontext.Cinemas.SingleOrDefault(x => x.Id == cinemaId);
+            if (cinema == null)
+            {
+                return _response.ResponeError(StatusCodes.Status404NotFound, "khong tim thay rap chieu", null);
+            }
+            _dbcontext.Cinemas.Remove(cinema);
+            _dbcontext.SaveChanges();
+            return _response.ResponseSucess("xoa thanh cong", _converter.EntityToDTO(cinema));
         }
 
         public ResponseObject<DataResponse_Cinema> UpdateCinema(int cinemaId, Request_UpdateCinema request)
         {
-            throw new NotImplementedException();
+            var cinema = _dbcontext.Cinemas.SingleOrDefault(x => x.Id == cinemaId);
+            if(cinema == null)
+            {
+                return _response.ResponeError(StatusCodes.Status404NotFound, "khong tim thay rap chieu", null);
+            }
+            cinema.NameOfCinema = request.NameOfCinema;
+            cinema.Address = request.Address;
+            cinema.Description = request.Description;
+            cinema.Code = request.Code;
+            _dbcontext.SaveChanges();
+            return _response.ResponseSucess("cap nhat thanh cong", _converter.EntityToDTO(cinema));
         }
     }
 }

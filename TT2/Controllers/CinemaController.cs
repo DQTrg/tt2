@@ -16,10 +16,22 @@ namespace TT2.Controllers
             _service = service;
         }
         [HttpPost("api/service/add_cinema")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult AddCinema([FromForm] Request_AddCinema request_Add)
         {
             return Ok(_service.AddCinema(request_Add));
+        }
+        [HttpPut("update")]
+        //[Authorize(Roles = "admin")]
+        public IActionResult UpdateCinema(int cinemaId, [FromForm] Request_UpdateCinema request_Update)
+        {
+            return Ok(_service.UpdateCinema(cinemaId, request_Update));
+        }
+        [HttpPut("delete")]
+        //[Authorize(Roles = "admin")]
+        public IActionResult DeleteCinema(int cinemaId)
+        {
+            return Ok(_service.DeleteCinema(cinemaId));
         }
     }
 }
