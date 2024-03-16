@@ -16,7 +16,7 @@ namespace TT2.Controllers
             _service = service;
         }
         [HttpPost("api/service/add_cinema")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public IActionResult AddCinema([FromBody] Request_AddCinema request_Add)
         {
             return Ok(_service.AddCinema(request_Add));
