@@ -203,7 +203,7 @@ namespace TT2.Service.Implement
                 {
                     new Claim("Id", user.Id.ToString()),
                     new Claim("User_Name", user.Username.ToString()),
-                    new Claim(ClaimTypes.Role, role.Code),
+                    new Claim(ClaimTypes.Role, role.RoleName),
 
                 }),
                 Expires = DateTime.Now.AddHours(4),
