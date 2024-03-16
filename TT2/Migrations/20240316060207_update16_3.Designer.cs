@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TT2.Migrations
 {
     [DbContext(typeof(App_DBcontext))]
-    partial class App_DBcontextModelSnapshot : ModelSnapshot
+    [Migration("20240316060207_update16_3")]
+    partial class update16_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,10 +169,6 @@ namespace TT2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieTypeId");
-
-                    b.HasIndex("RateId");
 
                     b.ToTable("Movies");
                 });
@@ -404,10 +403,6 @@ namespace TT2.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.HasIndex("SeatStatusId");
-
-                    b.HasIndex("SeatTypeId");
-
                     b.ToTable("Seats");
                 });
 
@@ -566,21 +561,6 @@ namespace TT2.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TT2.Entity.Movie", b =>
-                {
-                    b.HasOne("TT2.Entity.MovieType", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("MovieTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.Rate", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("RateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("TT2.Entity.RefreshToken", b =>
                 {
                     b.HasOne("TT2.Entity.User", "User")
@@ -621,18 +601,6 @@ namespace TT2.Migrations
                     b.HasOne("TT2.Entity.Room", null)
                         .WithMany("Seats")
                         .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.SeatStatus", null)
-                        .WithMany("Seats")
-                        .HasForeignKey("SeatStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.SeatType", null)
-                        .WithMany("Seats")
-                        .HasForeignKey("SeatTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -677,19 +645,9 @@ namespace TT2.Migrations
                     b.Navigation("Schedules");
                 });
 
-            modelBuilder.Entity("TT2.Entity.MovieType", b =>
-                {
-                    b.Navigation("Movies");
-                });
-
             modelBuilder.Entity("TT2.Entity.RankCustomer", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Rate", b =>
-                {
-                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("TT2.Entity.Role", b =>
@@ -707,16 +665,6 @@ namespace TT2.Migrations
             modelBuilder.Entity("TT2.Entity.Schedule", b =>
                 {
                     b.Navigation("Tickets");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatStatus", b =>
-                {
-                    b.Navigation("Seats");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatType", b =>
-                {
-                    b.Navigation("Seats");
                 });
 
             modelBuilder.Entity("TT2.Entity.UserStatus", b =>

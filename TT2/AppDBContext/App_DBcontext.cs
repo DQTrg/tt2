@@ -17,9 +17,13 @@ public class App_DBcontext : DbContext
     public DbSet<Cinema> Cinemas { get; set; }
     public DbSet<Food> Foods { get; set; }
     public DbSet<Movie> Movies { get; set; }
+    public DbSet<MovieType> MovieTypes { get; set; }
+    public DbSet<Rate> Rates { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<Seat> Seats { get; set; }
+    public DbSet<SeatStatus> SeatStatuses { get; set; }
+    public DbSet<SeatType> SeatTypes { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
