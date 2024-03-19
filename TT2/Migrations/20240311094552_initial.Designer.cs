@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TT2.Migrations
 {
     [DbContext(typeof(App_DBcontext))]
-    partial class App_DBcontextModelSnapshot : ModelSnapshot
+    [Migration("20240311094552_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,124 +23,6 @@ namespace TT2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("TT2.Entity.Bill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BillStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PromotionId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalMoney")
-                        .HasColumnType("float");
-
-                    b.Property<string>("TradingCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BillStatusId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Bills");
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillFood", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BillId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BillId");
-
-                    b.HasIndex("FoodId");
-
-                    b.ToTable("BillFoods");
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BillStatuses");
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillTicket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BillId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TicketId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BillId");
-
-                    b.HasIndex("TicketId");
-
-                    b.ToTable("BillTickets");
-                });
 
             modelBuilder.Entity("TT2.Entity.Cinema", b =>
                 {
@@ -263,10 +148,6 @@ namespace TT2.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Language")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("MovieDuration")
                         .HasColumnType("int");
 
@@ -289,76 +170,7 @@ namespace TT2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieTypeId");
-
-                    b.HasIndex("RateId");
-
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("TT2.Entity.MovieType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MovieTypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MovieTypes");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Promotion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Percent")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RankCustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RankCustomerId");
-
-                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("TT2.Entity.RankCustomer", b =>
@@ -386,27 +198,6 @@ namespace TT2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RankCustomers");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Rate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Rates");
                 });
 
             modelBuilder.Entity("TT2.Entity.RefreshToken", b =>
@@ -571,49 +362,7 @@ namespace TT2.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.HasIndex("SeatStatusId");
-
-                    b.HasIndex("SeatTypeId");
-
                     b.ToTable("Seats");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SeatStatuses");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("NameType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SeatTypes");
                 });
 
             modelBuilder.Entity("TT2.Entity.Ticket", b =>
@@ -722,49 +471,6 @@ namespace TT2.Migrations
                     b.ToTable("UserStatuses");
                 });
 
-            modelBuilder.Entity("TT2.Entity.Bill", b =>
-                {
-                    b.HasOne("TT2.Entity.BillStatus", null)
-                        .WithMany("Bills")
-                        .HasForeignKey("BillStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.User", null)
-                        .WithMany("Bills")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillFood", b =>
-                {
-                    b.HasOne("TT2.Entity.Bill", null)
-                        .WithMany("BillFoods")
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.Food", null)
-                        .WithMany("BillFoods")
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillTicket", b =>
-                {
-                    b.HasOne("TT2.Entity.Bill", null)
-                        .WithMany("BillTickets")
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.Ticket", null)
-                        .WithMany("BillTickets")
-                        .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("TT2.Entity.ConfirmEmail", b =>
                 {
                     b.HasOne("TT2.Entity.User", "User")
@@ -774,30 +480,6 @@ namespace TT2.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Movie", b =>
-                {
-                    b.HasOne("TT2.Entity.MovieType", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("MovieTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.Rate", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("RateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("TT2.Entity.Promotion", b =>
-                {
-                    b.HasOne("TT2.Entity.RankCustomer", null)
-                        .WithMany("Promotions")
-                        .HasForeignKey("RankCustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TT2.Entity.RefreshToken", b =>
@@ -842,18 +524,6 @@ namespace TT2.Migrations
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("TT2.Entity.SeatStatus", null)
-                        .WithMany("Seats")
-                        .HasForeignKey("SeatStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TT2.Entity.SeatType", null)
-                        .WithMany("Seats")
-                        .HasForeignKey("SeatTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TT2.Entity.Ticket", b =>
@@ -886,26 +556,9 @@ namespace TT2.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TT2.Entity.Bill", b =>
-                {
-                    b.Navigation("BillFoods");
-
-                    b.Navigation("BillTickets");
-                });
-
-            modelBuilder.Entity("TT2.Entity.BillStatus", b =>
-                {
-                    b.Navigation("Bills");
-                });
-
             modelBuilder.Entity("TT2.Entity.Cinema", b =>
                 {
                     b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Food", b =>
-                {
-                    b.Navigation("BillFoods");
                 });
 
             modelBuilder.Entity("TT2.Entity.Movie", b =>
@@ -913,21 +566,9 @@ namespace TT2.Migrations
                     b.Navigation("Schedules");
                 });
 
-            modelBuilder.Entity("TT2.Entity.MovieType", b =>
-                {
-                    b.Navigation("Movies");
-                });
-
             modelBuilder.Entity("TT2.Entity.RankCustomer", b =>
                 {
-                    b.Navigation("Promotions");
-
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Rate", b =>
-                {
-                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("TT2.Entity.Role", b =>
@@ -945,26 +586,6 @@ namespace TT2.Migrations
             modelBuilder.Entity("TT2.Entity.Schedule", b =>
                 {
                     b.Navigation("Tickets");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatStatus", b =>
-                {
-                    b.Navigation("Seats");
-                });
-
-            modelBuilder.Entity("TT2.Entity.SeatType", b =>
-                {
-                    b.Navigation("Seats");
-                });
-
-            modelBuilder.Entity("TT2.Entity.Ticket", b =>
-                {
-                    b.Navigation("BillTickets");
-                });
-
-            modelBuilder.Entity("TT2.Entity.User", b =>
-                {
-                    b.Navigation("Bills");
                 });
 
             modelBuilder.Entity("TT2.Entity.UserStatus", b =>
