@@ -10,5 +10,7 @@ namespace TT2.Entity
         public string Image {  get; set; }
         public string NameOfFood { get; set; }
         public bool IsActive { get; set; }
+
+        public List<BillFood> BillFoods { get; set; }
     }
 }

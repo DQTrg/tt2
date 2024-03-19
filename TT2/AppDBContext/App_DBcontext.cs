@@ -25,7 +25,11 @@ public class App_DBcontext : DbContext
     public DbSet<SeatStatus> SeatStatuses { get; set; }
     public DbSet<SeatType> SeatTypes { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
-
+    public DbSet<Bill> Bills { get; set; }
+    public DbSet<BillFood> BillFoods { get; set; }
+    public DbSet<BillStatus> BillStatuses { get; set; }
+    public DbSet<BillTicket> BillTickets { get; set; }
+    public DbSet<Promotion> Promotions { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Server = Admin; database = dbCinema; Trusted_Connection = true; TrustServerCertificate = true");

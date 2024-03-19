@@ -8,5 +8,7 @@
         public int SeatId { get; set; }
         public double PriceTicket { get; set; }
         public bool IsActive { get; set; }
+        
+        public List<BillTicket> BillTickets { get; set; }
     }
 }
