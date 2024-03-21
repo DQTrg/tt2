@@ -9,5 +9,6 @@
         public bool IsActive { get; set; }
 
         public List<User> Users { get; set; }
+        public List<Promotion> Promotions { get; set; }
     }
 }
