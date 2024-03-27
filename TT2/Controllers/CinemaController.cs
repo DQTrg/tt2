@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.Cinema;
 using TT2.Payload.DataResponse;
 using TT2.Payload.Response;
 using TT2.Service.Interface;

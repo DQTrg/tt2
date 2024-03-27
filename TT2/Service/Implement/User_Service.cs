@@ -3,7 +3,6 @@ using System.Net.Mail;
 using System.Net;
 using TT2.Entity;
 using TT2.Payload.Converter;
-using TT2.Payload.DataRequest;
 using TT2.Payload.DataResponse;
 using TT2.Payload.Response;
 using TT2.Service.Interface;
@@ -15,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using TT2.Payload.DataRequest.User;
 
 namespace TT2.Service.Implement
 {

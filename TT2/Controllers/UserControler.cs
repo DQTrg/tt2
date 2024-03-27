@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.User;
 using TT2.Service.Implement;
 using TT2.Service.Interface;
 

@@ -1,6 +1,6 @@
 ﻿using TT2.Entity;
 using TT2.Payload.Converter;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.Movie;
 using TT2.Payload.DataResponse;
 using TT2.Payload.Response;
 using TT2.Service.Interface;

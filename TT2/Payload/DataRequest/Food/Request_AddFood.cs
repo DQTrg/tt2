@@ -1,6 +1,6 @@
-﻿namespace TT2.Payload.DataRequest
+﻿namespace TT2.Payload.DataRequest.Food
 {
-    public class Request_UpdateFood
+    public class Request_AddFood
     {
         public double Price { get; set; }
         public string Description { get; set; }
