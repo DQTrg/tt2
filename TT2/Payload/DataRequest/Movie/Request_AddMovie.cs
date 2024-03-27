@@ -1,4 +1,4 @@
-﻿namespace TT2.Payload.DataRequest
+﻿namespace TT2.Payload.DataRequest.Movie
 {
     public class Request_AddMovie
     {

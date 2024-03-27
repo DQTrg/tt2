@@ -1,7 +1,7 @@
 ﻿using Azure;
 using TT2.Entity;
 using TT2.Payload.Converter;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.Cinema;
 using TT2.Payload.DataResponse;
 using TT2.Payload.Response;
 using TT2.Service.Interface;

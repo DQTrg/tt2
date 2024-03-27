@@ -1,6 +1,6 @@
-﻿namespace TT2.Payload.DataRequest
+﻿namespace TT2.Payload.DataRequest.Cinema
 {
-    public class Request_AddCinema
+    public class Request_UpdateCinema
     {
         public string Address { get; set; }
         public string Description { get; set; }

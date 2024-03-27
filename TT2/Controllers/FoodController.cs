@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.Food;
 using TT2.Service.Interface;
 
 namespace TT2.Controllers

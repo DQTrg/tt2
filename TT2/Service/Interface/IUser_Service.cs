@@ -1,5 +1,5 @@
 ﻿using TT2.Entity;
-using TT2.Payload.DataRequest;
+using TT2.Payload.DataRequest.User;
 using TT2.Payload.DataResponse;
 using TT2.Payload.Response;
 

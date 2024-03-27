@@ -1,6 +1,6 @@
-﻿namespace TT2.Payload.DataRequest
+﻿namespace TT2.Payload.DataRequest.Room
 {
-    public class Request_AddRoom
+    public class Request_UpdateRoom
     {
         public int Capacity { get; set; }
         public int Type { get; set; }
