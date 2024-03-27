@@ -56,7 +56,9 @@ namespace TT2.Service.Implement
             {
                 return _response.ResponeError(StatusCodes.Status400BadRequest, "khong ton tai", null);
             }
-            throw new NotImplementedException();
+            _dbcontext.Schedules.Remove(schedule);
+            _dbcontext.SaveChanges();
+            return _response.ResponseSucess("xoa thanh cong", _converter.EntityToDTO(schedule));
         }
 
         public ResponseObject<DataResponse_Schedule> UpdateSchedule(int scheduleId, Request_UpdateSchedule request)
