@@ -63,7 +63,18 @@ namespace TT2.Service.Implement
 
         public ResponseObject<DataResponse_Schedule> UpdateSchedule(int scheduleId, Request_UpdateSchedule request)
         {
-            throw new NotImplementedException();
+            var schedule = _dbcontext.Schedules.SingleOrDefault(x =>x.Id == scheduleId);
+            if(schedule == null)
+            {
+                return _response.ResponeError(StatusCodes.Status400BadRequest, "khong ton tai", null);
+            }
+            schedule.Price = request.Price;
+            schedule.StartAt = request.StartAt;
+            schedule.EndAt = request.EndAt;
+            schedule.Code = request.Code;
+            schedule.Name = request.Name;
+            _dbcontext.SaveChanges();
+            return _response.ResponseSucess("sua thanh cong", _converter.EntityToDTO(schedule));
         }
     }
 }
