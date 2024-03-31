@@ -27,5 +27,15 @@ namespace TT2.Controllers
         {
             return Ok(_service.DeleteMovie(movieId));
         }
+        [HttpGet("get_all_movies")]
+        public IActionResult GetAllMovies()
+        {
+            return Ok(_service.GetAllMovies());
+        }
+        [HttpGet("get_movie_by_id")]
+        public IActionResult GetMovieById(int movieId)
+        {
+            return Ok(_service.GetMovieById(movieId));
+        }
     }
 }

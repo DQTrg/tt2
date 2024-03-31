@@ -18,6 +18,8 @@ builder.Services.AddScoped<IFood_Service, Food_Service>();
 builder.Services.AddScoped<ISeat_Service, Seat_Service>();
 builder.Services.AddScoped<IMovie_Service, Movie_Service>();
 builder.Services.AddScoped<ISchedule_Service, Schedule_Service>();
+builder.Services.AddScoped<ITicket_Service, Ticket_Service>();
+builder.Services.AddScoped<IPromotion_Service, Promotion_Service>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
