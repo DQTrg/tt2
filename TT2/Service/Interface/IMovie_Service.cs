@@ -9,5 +9,7 @@ namespace TT2.Service.Interface
         ResponseObject<DataResponse_Movie> AddMovie(Request_AddMovie request);
         ResponseObject<DataResponse_Movie> UpdateMovie(int movieId, Request_UpdateMovie request);
         ResponseObject<DataResponse_Movie> DeleteMovie(int movieId);
+        IQueryable<DataResponse_Movie> GetAllMovies();
+        ResponseObject<DataResponse_Movie> GetMovieById(int movieId);
     }
 }

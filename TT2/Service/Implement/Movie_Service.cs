@@ -65,6 +65,18 @@ namespace TT2.Service.Implement
             return _response.ResponseSucess("xoa thanh cong", _converter.EntityToDTO(movie));
         }
 
+        public IQueryable<DataResponse_Movie> GetAllMovies()
+        {
+            var movies = _dbcontext.Movies.ToList();
+            return movies.Select(x => _converter.EntityToDTO(x)).AsQueryable();
+        }
+
+        public ResponseObject<DataResponse_Movie> GetMovieById(int movieId)
+        {
+            var movie = _dbcontext.Movies.SingleOrDefault(x => x.Id == movieId);
+            return _response.ResponseSucess("thanh cong", _converter.EntityToDTO(movie));
+        }
+
         public ResponseObject<DataResponse_Movie> UpdateMovie(int movieId, Request_UpdateMovie request)
         {
             var movie = _dbcontext.Movies.SingleOrDefault(x => x.Id == movieId);
